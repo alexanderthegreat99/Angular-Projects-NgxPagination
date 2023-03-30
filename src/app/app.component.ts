@@ -10,15 +10,18 @@ import { ProductService } from './Services/product.service';
 export class AppComponent {
   title = 'PaginationApp';
   p:number = 1;
-  subscriptionp: Subscription = Subscription.EMPTY;
+  //subscriptionp: Subscription = Subscription.EMPTY;
   constructor(private productService: ProductService) { }
   ngOnInit(): void {
-    this.subscriptionp = this.productService.getp().subscribe(value => {
-      this.p = value;
-    });
+    //this.subscriptionp = this.productService.getp().subscribe(value => {
+     // this.p = value;
+     // console.log(this.productService.getProducts());
+      
+   // });
   }
-  onPageChange(pageNumber: number) {
+  /*onPageChange(pageNumber: number) {
     this.p = pageNumber;
     this.productService.updateP(this.p);
   }
+  */
 }

@@ -14,16 +14,33 @@ export class ProductsComponent implements OnInit {
   products: any[] = [];
   arrayLength: number = 0;
   startIndex: number =0;
-  endIndex: number =0;
+  endIndex: number =2;
   subscriptionStartIndex: Subscription = Subscription.EMPTY;
   subscriptionEndIndex: Subscription = Subscription.EMPTY;
   subscriptionp: Subscription = Subscription.EMPTY;
   constructor(private productService: ProductService) { }
 
+
   ngOnInit(): void {
-    this.products = this.productService.products;
+    this.productService.getProducts();
+   // this.productService.testProducts();
+   this.productService.getProducts().subscribe(item => {
+    console.log(item);
+   this.products = item;
+    console.log(this.products);
+    });
+     //this.testProducts();
+    console.log("products:", this.products);
+   
+  }
+  onPageChange(pageNumber: number) {
+    this.p = pageNumber;
+    //this.productService.updateP(this.p);
+  }
+}
     
-    //this.arrayLength= this.products.length;
+  
+ /*
     this.arrayLength = this.productService.arrayLength;
     this.totalProduct = this.productService.arrayLength;
     this.subscriptionp = this.productService.getp().subscribe(value => {
@@ -33,19 +50,20 @@ export class ProductsComponent implements OnInit {
     this.subscriptionStartIndex = this.productService.getStartIndex().subscribe(value => {
       this.startIndex = value;
     });
-    //this.startIndex = this.productService.startIndex;
+   
     console.log( "startIndex: " + this.startIndex);
     this.subscriptionEndIndex = this.productService.getEndIndex().subscribe(value => {
       this.endIndex = value;
     });
-    //this.endIndex = this.productService.endIndex;
+    
     console.log( "endIndex: " + this.endIndex);
 
 
    
   }
+ 
   ngOnDestroy() {
     this.subscriptionStartIndex.unsubscribe();
-    this.subscriptionEndIndex.unsubscribe();
+   this.subscriptionEndIndex.unsubscribe();
   }
-}
+   */  

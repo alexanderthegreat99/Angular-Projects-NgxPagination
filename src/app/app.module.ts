@@ -4,7 +4,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { ProductsComponent } from './products/products.component';
 import { NgxPaginationModule } from 'ngx-pagination';
-
+import { AngularFireModule } from '@angular/fire/compat'
+import { environment } from './environments/environment';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -12,7 +14,10 @@ import { NgxPaginationModule } from 'ngx-pagination';
   ],
   imports: [
     BrowserModule,
-    NgxPaginationModule
+    HttpClientModule,
+    NgxPaginationModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

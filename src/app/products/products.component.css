@@ -18,3 +18,7 @@
 .image-container {
     padding-top: 20px;
   }
+  .parent-container {
+    display: flex;
+    justify-content: center;
+  }
